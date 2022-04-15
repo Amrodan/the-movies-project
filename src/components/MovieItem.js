@@ -1,7 +1,6 @@
 import React from 'react';
 
 function MovieItem(props) {
-	console.log(props);
 	return (
 		<div className="grid-cols-3 grid gap-x-32 gap-y-32  ml-9">
 			{props.movies &&

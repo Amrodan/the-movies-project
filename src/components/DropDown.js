@@ -14,8 +14,8 @@ const Dropdown = ({ color, setMovies }) => {
 		const CategoryId = genres.find((item) => item.name === event.target.text).id;
 		const url = `https://api.themoviedb.org/3/discover/movie?api_key=d2fa7ad1e26af0847d349d7dbd5f93e5&language=en-US&with_genres=${CategoryId}`;
 		fetch(url).then((response) => response.json()).then((json) => {
-			console.log(json);
 			setMovies(json.results);
+			closeDropdownPopover();
 		});
 	}
 
@@ -23,7 +23,6 @@ const Dropdown = ({ color, setMovies }) => {
 		const url =
 			'https://api.themoviedb.org/3/genre/movie/list?api_key=d2fa7ad1e26af0847d349d7dbd5f93e5&language=en-US';
 		fetch(url).then((response) => response.json()).then((json) => {
-			console.log(json);
 			setGenres(json.genres);
 		});
 	}, []);
@@ -45,7 +44,6 @@ const Dropdown = ({ color, setMovies }) => {
 			<div className="flex flex-wrap">
 				<div className="w-full sm:w-6/12 md:w-4/12 px-4">
 					<div className="relative inline-flex align-middle w-full">
-						{category}
 						<button
 							className={
 								'text-white font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 ' +
@@ -57,7 +55,7 @@ const Dropdown = ({ color, setMovies }) => {
 								dropdownPopoverShow ? closeDropdownPopover() : openDropdownPopover();
 							}}
 						>
-							{color === 'white' ? 'Category list' : color + ' Dropdown'}
+							{color === 'white' ? category : color + ' Dropdown'}
 						</button>
 
 						<div

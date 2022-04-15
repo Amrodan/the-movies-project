@@ -20,11 +20,17 @@ function Search({ handleMovies }) {
 
 	function handleSubmit(e) {
 		e.preventDefault();
-		handleMovies(query);
-		setQuery('');
-		setTimeout(() => {
+		if (query === '') {
 			setSpinner(false);
-		}, 1000);
+			return;
+		} else {
+			handleMovies(query);
+			setQuery('');
+
+			setTimeout(() => {
+				setSpinner(false);
+			}, 1000);
+		}
 	}
 
 	return (
