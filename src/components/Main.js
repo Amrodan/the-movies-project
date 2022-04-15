@@ -1,7 +1,7 @@
 import React from 'react';
 import MovieGrid from './MovieGrid';
 function Main(props) {
-	// console.log(movies);
+	console.log(props);
 	return (
 		<div>
 			<MovieGrid movies={props.movies} />

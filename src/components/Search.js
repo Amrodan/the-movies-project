@@ -33,8 +33,15 @@ function Search({ handleMovies }) {
 				<div className="flex">
 					<CircleLoader loading={spinner} css={override} size={40} />
 
-					<input onChange={handleQuery} type="search" placeholder="Search.." name="search" value={query} />
-					<button type="submit" onClick={handleSubmit}>
+					<input
+						onChange={handleQuery}
+						type="search"
+						placeholder="Search.."
+						name="search"
+						value={query}
+						className="  w-full  text-gray-600   px-4 py-2 focus:outline-none"
+					/>
+					<button type="submit" onClick={handleSubmit} className="m-2">
 						search
 					</button>
 				</div>

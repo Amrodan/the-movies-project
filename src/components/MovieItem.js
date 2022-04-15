@@ -1,19 +1,17 @@
 import React from 'react';
 
 function MovieItem(props) {
-	// console.log(props.movies);
+	console.log(props);
 	return (
-		<div>
+		<div className="grid-cols-3 grid gap-x-32 gap-y-32  ml-9">
 			{props.movies &&
 				props.movies.map((movie) => (
-					<div className="movie_item" key={movie.id}>
+					<div className="w-80" key={movie.id}>
 						{movie.poster_path && (
 							<img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
 						)}{' '}
-						<div className="movie_item_info">
+						<div>
 							<h1>{movie.title}</h1>
-							<h2>{movie.release_date}</h2>
-							<p>{movie.overview}</p>
 						</div>
 					</div>
 				))}
