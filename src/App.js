@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import Nav from './components/Nav';
+import MoviePage from './components/MoviePage';
+import Home from './components/Home';
+import About from './components/About';
 // import Footer from './components/Footer';
 import Main from './components/Main';
+import { Routes, Route, Link } from 'react-router-dom';
+
 const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
 const api_key = '4dde074fa7d73f77aac90d563dc0633a';
 
@@ -20,15 +25,20 @@ function App() {
 
 	useEffect(() => {
 		if (movies.length !== 0) {
-			handleMovies('');
+			handleMovies();
 		}
 	}, []);
 
 	return (
 		<div>
 			<Nav handleMovies={handleMovies} setMovies={setMovies} />
+			<Routes>
+				<Route path="/" element={<Main movies={movies} />} />
 
-			<Main movies={movies} />
+				<Route path="/" element={<Home />} />
+				<Route path="about" element={<About />} />
+				<Route path="movie/:movieId" element={<MoviePage movies={movies} />} />
+			</Routes>
 		</div>
 	);
 }

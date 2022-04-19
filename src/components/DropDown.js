@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { createPopper } from '@popperjs/core';
-
-const Dropdown = ({ color, setMovies }) => {
+import { Link, Outlet, Route, Routes } from 'react-router-dom';
+const DropdownRender = ({ color = 'white', setMovies }) => {
 	// dropdown props
 	const [ dropdownPopoverShow, setDropdownPopoverShow ] = React.useState(false);
 	const btnDropdownRef = React.createRef();
@@ -70,7 +70,8 @@ const Dropdown = ({ color, setMovies }) => {
 							{genres &&
 								genres.map((genre) => (
 									<a
-										href="#pablo"
+										href="#/"
+										rel="noopener noreferrer"
 										className={
 											'text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent ' +
 											(color === 'white' ? ' text-slate-700' : 'text-white')
@@ -88,11 +89,4 @@ const Dropdown = ({ color, setMovies }) => {
 		</div>
 	);
 };
-
-export default function DropdownRender(props) {
-	return (
-		<div>
-			<Dropdown color="white" setMovies={props.setMovies} />
-		</div>
-	);
-}
+export default DropdownRender;
